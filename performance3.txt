@@ -1,0 +1,12 @@
+Aligner3 is signle read alignment to reference sequence by inexact matching. Algorithm for inexact matching is implemented as modified Needleman Wunsch method. Below has shown the command and results of alignment.
+
+-bash-4.1$ python aligner3.py reference.fa reads.fa alignment3.txt
+218 reads have been aligned to reference sequence
+0 reads have failed to align to reference sequence 0.000000 %
+0 reads has matched exactly once to reference sequence 0.000000 %
+218 reads has matched more than once to reference sequence 100.000000 %
+Done
+
+This inexact matching algorithm has performed very well. All of the reads have aligned to reference sequence with different mapping costs. The highest cost of mapping is 2. The average cost over all reads is (total cost of every reads) / total read number = 166/218=0.76. The weighted mean of alignment cost can be counted in R software. The R commond for calculating this is weighted.mean(alignment3$MAPPING_COST, alignment3$NUMBER_OF_ALIGNMENTS)=1.04.
+
+Compared to aligner 1 result 10% of reads (23) that failed to align to reference sequence have all aligned to reference at a cost of 1 to 2. This is what we expected from using inexact matching algorithm. It also suggests there are some small errors (1-2bp difference) in these reads. The reported reads are not sensible in terms of their alignment location. This means that the reported location of each read can change according to their alignment cost. In order to make our inexact matching algorithm more sensible we could set the upper limit of alignment cost to restrict the location of alignment. Also we could change our penalty score of indel and mismatch to better represent error patterns in sequencing reads. Last paired-end read sequencing in task 2 can also help to improve the sensitivity of inexact matching by restricting paired reads into certain range on reference sequence.  

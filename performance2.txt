@@ -1,0 +1,10 @@
+This is paired-end reads mapping by exact matching. Below shows the commands and results.
+
+-bash-4.1$ Assignment weilu1$ python aligner2.py reference.fa reads_R1.fa reads_R2.fa alignment2.txt 
+109 read pairs have been aligned to reference sequence
+85 read pairs matched as concordants to reference sequence 77.981651 %
+24 read pairs failed to match concordantly to reference sequence 22.018349 %
+Done
+
+The alignment overall is average and 78% of read pairs have been aligned concordantly to reference sequence. The results have not been improved comparing to task 1. In task 2 many reads have been aligned discordantly so they are not counted as successful aligned reads. In aligner of task 1 and 2 we implement a naive exact matching algorithm it cannot tolerate any mismatch between reads and reference sequence. In order to improve the performace and specificity of our aligner we need to implement a more sophisticated algorithm to tolerate mutations and errors in reads. For example, Needleman Wunsch algorithm can replace our naive searching algorithm. This will improve the total aligned reads and concordantly aligned read pairs as well. 
+ 

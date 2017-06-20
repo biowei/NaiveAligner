@@ -1,0 +1,9 @@
+This is signle reads alignment to reference sequence by exact matching. Below has shown the command and results of alignment.
+
+-bash-4.1$ python aligner1.py reference.fa reads.fa alignment1.txt
+218 reads have been aligned to reference sequence
+23 reads have failed to align to reference sequence 10.550459 %
+88 reads has matched exactly once to reference sequence 40.366972 %
+107 reads has matched more than once to reference sequence 49.082569 %
+
+The alignment overall is good and nearly 90% of reads have been aligned exactly to reference sequence. Due to the short length of reads is only around 6bp almost half of mapped reads have been aligned to multi locations of reference sequence. Less than half of 218 reads have been matched only once. There are also 10% of reads have not been aligned to reference. This is because that these reads have mutations or errors and can't be aligned exactly. 
